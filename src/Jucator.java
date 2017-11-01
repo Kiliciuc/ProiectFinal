@@ -8,7 +8,7 @@ public class Jucator {
             this.Nume = Nume;
         }
 
-        public void saveJucator(Statement myStmt) {
+        public void saveJucator(Statement myStmt,String numejucator) {
             String insertDb = "insert into nume"
                     + "(nume)"
                     + "values ("

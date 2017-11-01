@@ -9,19 +9,22 @@ public class PaginaStart extends  JFrame {
     JLabel regulajocului;
     JTextField Regulajocului;
     Statement myStmt;
+    String numejucator;
 
-    public PaginaStart(Statement myStmt) {
-        this.setTitle("Regula Jocului");
+    public PaginaStart(Statement myStmt, String numejucator) {
+        this.myStmt = myStmt;
+        this.numejucator = numejucator;
+        this.setTitle("Descopera Romania");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(700, 400);
+        this.setSize(900, 600);
         this.setLocationRelativeTo(null);
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 //field regula jocului
         JPanel regPanel = new JPanel();
-        regPanel.setBackground(Color.yellow);
+        regPanel.setBackground(Color.white);
         regPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 20));
-        regulajocului = new JLabel("XXXXXXXXXXXXXXXX");
+        regulajocului = new JLabel("Regula jocului:");
         regulajocului.setFont(new Font("Arial", Font.BOLD, 16));
         Regulajocului = new JTextField(30);
         Regulajocului.setFont(new Font("Arial", Font.BOLD, 16));
@@ -31,13 +34,13 @@ public class PaginaStart extends  JFrame {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 20));
         //button, add start button
         startButton = new JButton("START");
-        startButton.setPreferredSize(new Dimension(150, 40));
+        startButton.setPreferredSize(new Dimension(150, 30));
         startButton.setFont(new Font("Arial", Font.PLAIN, 18));
         buttonPanel.add(startButton);
 
         //button, add exit button
         exitButton = new JButton("EXIT");
-        exitButton.setPreferredSize(new Dimension(150, 40));
+        exitButton.setPreferredSize(new Dimension(150, 30));
         exitButton.setFont(new Font("Arial", Font.PLAIN, 18));
         buttonPanel.add(exitButton);
 
@@ -59,7 +62,7 @@ public class PaginaStart extends  JFrame {
             if (e.getSource() == exitButton) {
                 dispose();
             } else if (e.getSource() == startButton) {
-                new Paginaintrebari(myStmt);
+                new Quiz(myStmt,numejucator);
                 dispose();//dispare fereastra anterioara
             }
 

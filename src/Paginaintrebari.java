@@ -17,7 +17,7 @@ public class Paginaintrebari extends JFrame {
         this.setTitle( "XXXXXXXXXXXXXXXXXXXXX" );
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         this.setSize( 600, 400 );
-        this.setLocationRelativeTo( null );
+        this.setLocationRelativeTo(null);
         // Creaza main panel panel principal care contine toate celelalte elemente
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout( new BorderLayout() );

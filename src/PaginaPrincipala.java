@@ -20,14 +20,14 @@ public class PaginaPrincipala extends JFrame {
         // Modalitatea de inchidere a ferestrei
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Marimea ferestrei
-        this.setSize(900, 400);
+        this.setSize(900, 600);
         // Pozitioneaza fereastra in centrul ecranului
         this.setLocationRelativeTo(null);
         // Creaza mainPanel - panel principal care include toate elementele
         JLabel mainLabel = new JLabel();
-        mainLabel.setSize(900, 400);
+        mainLabel.setSize(900, 600);
         try {
-            img = ImageIO.read(new File("C:\\Users\\imi\\Desktop\\harta-romania.png"));
+            img = ImageIO.read(new File("C:\\Users\\imi\\Desktop\\romania1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,20 +41,23 @@ public class PaginaPrincipala extends JFrame {
         this.setContentPane(mainLabel);
 
         // Textul din fereastra principala
-        JLabel welcomeLabel = new JLabel("XXXXXXXXXXXXXXXXXXX", JLabel.CENTER);
-        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        //JLabel welcomeLabel = new JLabel("", JLabel.CENTER);
+        //welcomeLabel.setFont(new Font("Arial", Font.BOLD, 28));
         // Creaza buttonPanel care va contine butoanele
         JPanel buttonPanel = new JPanel();
         // Precizeaza layout pentru buttonPanel
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 20));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 190, -1));
+        buttonPanel.setOpaque( false );
         // Butonul exit
         exitButton = new JButton("EXIT");
         exitButton.setPreferredSize(new Dimension(150, 40));
-        exitButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        exitButton.setFont(new Font("Arial", Font.BOLD, 18));
+        exitButton.setOpaque( false );
         //Butonul start
         startButton = new JButton("Start");
         startButton.setPreferredSize(new Dimension(150, 40));
-        startButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        startButton.setFont(new Font("Arial", Font.BOLD, 18));
+        startButton.setOpaque( false );
 
         // Face ca butoanele sa poata fi receptive la events
         ListenForButton listenForButton = new ListenForButton();
@@ -66,7 +69,7 @@ public class PaginaPrincipala extends JFrame {
         // buttonPanel.add(listButton);
         // Adauga buttonPanel la mainPanel
         mainLabel.add(buttonPanel, BorderLayout.SOUTH);
-        mainLabel.add(welcomeLabel);
+        //mainLabel.add(welcomeLabel);
         // Face fereastra vizibila
         this.pack();
         this.setVisible(true);
