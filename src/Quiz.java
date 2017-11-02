@@ -88,6 +88,7 @@ class  Quiz extends JFrame implements ActionListener {
         } else if (btnext.getText().equals( "Afiseaza rezultatul" )) {
             new Report();
             dispose();
+            //
         }
 
     }

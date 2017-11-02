@@ -42,6 +42,7 @@ public class ListaScor extends JFrame {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            //
         }
         // Creaza tabel
         JTable jTable = new JTable(data, columnNames);

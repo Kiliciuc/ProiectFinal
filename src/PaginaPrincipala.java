@@ -144,6 +144,7 @@ public class PaginaPrincipala extends JFrame {
             } else if (e.getSource() == scorButton) {
                 new ListaScor(myStmt);
                 dispose();
+                //
             }
         }
     }
