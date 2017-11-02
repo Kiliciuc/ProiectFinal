@@ -1,18 +1,19 @@
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class Jucator {
-        String Nume;
+        String nume;
 
         public Jucator(String Nume) {
-            this.Nume = Nume;
+            this.nume = nume;
         }
 
-        public void saveJucator(Statement myStmt,String numejucator) {
-            String insertDb = "insert into nume"
+        public void saveJucator(Statement myStmt) {
+            String insertDb = "insert into numejucator"
                     + "(nume)"
                     + "values ("
-                    + this.Nume + ")";
+                    + nume + ")";
             try {
                 myStmt.executeUpdate(insertDb);
             } catch (SQLException e) {

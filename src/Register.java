@@ -118,6 +118,7 @@ public class Register extends JFrame {
             if (e.getSource() == start) {
                 Jucator jucator = new Jucator(numeField.getText());
                 //jucator.saveJucator(myStmt);
+                System.out.println("    -> REGISTER: statement = " + myStmt);
                 new PaginaStart(myStmt,numeField.getText());
                 dispose();
             } else if (e.getSource() == exit) {

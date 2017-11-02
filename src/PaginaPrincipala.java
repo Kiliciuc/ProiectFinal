@@ -1,17 +1,22 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 
 public class PaginaPrincipala extends JFrame {
-    JButton exitButton, startButton;
+    JButton exitButton, startButton, scorButton;
     BufferedImage img;
     Statement myStmt;
+//    Vector data, row, columnNames;
 
     public PaginaPrincipala(Statement myStmt) {
         this.myStmt = myStmt;
@@ -44,9 +49,46 @@ public class PaginaPrincipala extends JFrame {
         //JLabel welcomeLabel = new JLabel("", JLabel.CENTER);
         //welcomeLabel.setFont(new Font("Arial", Font.BOLD, 28));
         // Creaza buttonPanel care va contine butoanele
+
+//        ****************************** adaugam tabelul????? ***********************************
+
+//        JPanel listPanel = new JPanel();
+//        columnNames = new Vector();
+//        columnNames.add("Nume");
+//        columnNames.add("Scor");
+//
+//        try {
+//            ResultSet myRs = myStmt.executeQuery("select * from numejucator");
+//            data = new Vector();
+//            while (myRs.next()) {
+//                row = new Vector();
+//                row.add(myRs.getString(1));
+//                row.add(myRs.getString(2));
+//                data.add(row);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        // Creaza tabel
+//        JTable jTable = new JTable(data, columnNames);
+//        jTable.setRowHeight(jTable.getRowHeight() + 10);
+//        jTable.setFont(new Font("Arial", Font.PLAIN, 18));
+//        JTableHeader header = jTable.getTableHeader();
+//        header.setFont(new Font("Arial", Font.BOLD, 18));
+//        JScrollPane scrollPane = new JScrollPane(jTable);
+//        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+//        listPanel.add(scrollPane);
+//        mainLabel.add(listPanel,BorderLayout.CENTER);
+
+
+
+//        ****************************************************************************************
+
+
+
         JPanel buttonPanel = new JPanel();
         // Precizeaza layout pentru buttonPanel
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 190, -1));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 100, -1));
         buttonPanel.setOpaque( false );
         // Butonul exit
         exitButton = new JButton("EXIT");
@@ -59,13 +101,22 @@ public class PaginaPrincipala extends JFrame {
         startButton.setFont(new Font("Arial", Font.BOLD, 18));
         startButton.setOpaque( false );
 
+        //Butonul List scor
+        scorButton = new JButton("Scor");
+        scorButton.setPreferredSize(new Dimension(150, 40));
+        scorButton.setFont(new Font("Arial", Font.BOLD, 18));
+        scorButton.setOpaque( false );
+
         // Face ca butoanele sa poata fi receptive la events
         ListenForButton listenForButton = new ListenForButton();
         exitButton.addActionListener(listenForButton);
         startButton.addActionListener(listenForButton);
+        scorButton.addActionListener( listenForButton );
+
         // Adauga butoanele la buttonPanel
         buttonPanel.add(exitButton);
         buttonPanel.add(startButton);
+        buttonPanel.add( scorButton );
         // buttonPanel.add(listButton);
         // Adauga buttonPanel la mainPanel
         mainLabel.add(buttonPanel, BorderLayout.SOUTH);
@@ -86,8 +137,12 @@ public class PaginaPrincipala extends JFrame {
             }// Sursa eventului este butonul "Start"
             else if (e.getSource() == startButton) {
                 // Deschide fereastra Register
+                System.out.println("    -> PAGINA PRINCIPALA: statement = " + myStmt);
                 new Register(myStmt);
                 // Inchide fereastra Welcome
+                dispose();
+            } else if (e.getSource() == scorButton) {
+                new ListaScor(myStmt);
                 dispose();
             }
         }

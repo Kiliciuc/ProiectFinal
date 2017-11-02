@@ -10,7 +10,12 @@ public class Main {
         try {
             Connection myConn = DriverManager.getConnection(dbUrl, user, password);
             Statement myStmt = myConn.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from numejucator");
+            if (myStmt == null) {
+                System.out.println("    -> MAIN CLASS: myStmt = null");
+            } else {
+                System.out.println("    -> MAIN CLASS: statement: " + myStmt);
+            }
+//            ResultSet myRs = myStmt.executeQuery("select * from numejucator");
             //while (myRs.next())
             //jucatorcount++;
            new PaginaPrincipala(myStmt);

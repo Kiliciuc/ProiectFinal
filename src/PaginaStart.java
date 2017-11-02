@@ -62,6 +62,7 @@ public class PaginaStart extends  JFrame {
             if (e.getSource() == exitButton) {
                 dispose();
             } else if (e.getSource() == startButton) {
+                System.out.println("    -> PAGINA START: statement = " + myStmt);
                 new Quiz(myStmt,numejucator);
                 dispose();//dispare fereastra anterioara
             }
