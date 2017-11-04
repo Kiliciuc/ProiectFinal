@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -26,6 +25,7 @@ class  Quiz extends JFrame implements ActionListener {
         this.myStmt = myStmt;
         this.numejucator = numejucator;
         initializedata();
+        //Configurare pagina
         setTitle( "Descopera Romania" );
         setDefaultCloseOperation( EXIT_ON_CLOSE );
         this.setSize( 900, 600 );
@@ -34,6 +34,7 @@ class  Quiz extends JFrame implements ActionListener {
         Container cont = getContentPane();
         cont.setLayout( new BorderLayout() );
         cont.setBackground( Color.GRAY );
+        //Creaza Radiobutton
         bg = new ButtonGroup();
         choice1 = new JRadioButton( "Choice1", false );
         choice1.setFont( new Font( "Arial", Font.BOLD, 18 ) );
@@ -69,136 +70,125 @@ class  Quiz extends JFrame implements ActionListener {
         setVisible( true );
         qaid = 0;
         readqa( qaid );
-
     }
-
+    //Creaza ActionEveniment
     public void actionPerformed(ActionEvent e) {
 
         if (btnext.getText().equals( "Urmatoarea intrebare" )) {
             if (qaid < 9) {
-
                 map.put( qaid, getSelection() );
                 qaid++;
                 readqa( qaid );
             } else {
                 map.put( qaid, getSelection() );
                 btnext.setText( "Afiseaza rezultatul" );
-
             }
         } else if (btnext.getText().equals( "Afiseaza rezultatul" )) {
             new Report();
             dispose();
-
         }
-
     }
-
-
+        //initializare intrebari si variante de raspuns
     public void initializedata() {
-        //qpa stores pairs of question and its possible answers
         qpa = new String[10][5];
-
+        //Pentru intrebarea 1
         qpa[0][0] = "Care este resedinta de judet pentru judetul Cluj?";
         qpa[0][1] = "Cluj-Napoca";
         qpa[0][2] = "Targu Mures";
         qpa[0][3] = "Turda";
         qpa[0][4] = "Huedin";
-
+        //Pentru intrebarea 2
         qpa[1][0] = "Cel mai inalt varf muntos din Romania este?";
         qpa[1][1] = "Vf.Mare";
         qpa[1][2] = "Vf.Moldoveanu";
         qpa[1][3] = "Vf.Stoinița";
         qpa[1][4] = "Vf.Bucura";
-
-        qpa[2][0] = "Care este tara cu care se invecineza Romania la Nord?";
+        //Pentru intrebarea 3
+        qpa[2][0] = "Care este tara cu care se invecineaza Romania la Nord?";
         qpa[2][1] = "Marea Neaga";
         qpa[2][2] = "Republica Moldova";
         qpa[2][3] = "Ucraina";
         qpa[2][4] = "Ungaria";
-
+        //Pentru intrebarea 4
         qpa[3][0] = "In ce an a aderat Romania la UE?";
         qpa[3][1] = "2000";
         qpa[3][2] = "2005";
         qpa[3][3] = "2006";
         qpa[3][4] = "2007";
-
+        //Pentru intrebarea 5
         qpa[4][0] = "Ce semnifica ziua de 1 Decembrie pentru Romania?";
         qpa[4][1] = "prima zi din luna Decembrie";
         qpa[4][2] = "ziua lui M.Eminescu";
         qpa[4][3] = "ziua nationala a Romaniei";
         qpa[4][4] = "prima zi de iarna in Romania";
-
+        //Pentru intrebarea 6
         qpa[5][0] = "Mihai Eminescu este considerat?";
         qpa[5][1] = "cel mai mare luptator din istoria Romaniei";
         qpa[5][2] = "cel mai mare conducator din tara Moldovei";
         qpa[5][3] = "cel mai competent presedinte a Romaniei";
         qpa[5][4] = "cel mai mare poet a Romaniei";
-
+        //Pentru intrebarea 7
         qpa[6][0] = "Care este populatia Romaniei(conform recesamantului din 2011)?";
         qpa[6][1] = "15.589.475";
         qpa[6][2] = "20.121.641";
         qpa[6][3] = "19.968.002";
         qpa[6][4] = "85.254.975";
-
+        //Pentru intrebarea 8
         qpa[7][0] = "Cum se numeste lantul muntos care se afla pe teritoriul Romaniei?";
         qpa[7][1] = "Alpi";
         qpa[7][2] = "Carpati";
         qpa[7][3] = "Balcani";
         qpa[7][4] = "Romanasi";
-
+        //Pentru intrebarea 9
         qpa[8][0] = "Cand s-a nascut Regele Mihai I?";
         qpa[8][1] = "25.10.1921";
         qpa[8][2] = "25.10.1922";
         qpa[8][3] = "25.10.1923";
         qpa[8][4] = "25.10.1924";
-
+        //Pentru intrebarea 10
         qpa[9][0] = "Ce-a mai mare cladire din Romania este?";
         qpa[9][1] = "Casa Poporului";
         qpa[9][2] = "Palatul Poporului";
         qpa[9][3] = "Conacul lui Mircea Eliade";
         qpa[9][4] = "Castelul Romanilor";
 
-
-        //qca stores pairs of question and its correct answer
+        //Raspuns corect pentru fiecare intrebare
         qca = new String[10][2];
-
+        //Pentru intrebarea 1
         qca[0][0] = "Care este resedinta de judet pentru judetul Cluj?";
         qca[0][1] = "Cluj-Napoca";
-
+        //Pentru intrebarea 2
         qca[1][0] = "Cel mai inalt varf muntos din Romania este?";
         qca[1][1] = "Vf.Moldoveanu";
-
-        qca[2][0] = "Care este tara cu care se invecineza Romania la Nord?";
+        //Pentru intrebarea 3
+        qca[2][0] = "Care este tara cu care se invecineaza Romania la Nord?";
         qca[2][1] = "Ucraina";
-
+        //Pentru intrebarea 4
         qca[3][0] = "In ce an a aderat Romania la UE?";
         qca[3][1] = "2007";
-
-
+        //Pentru intrebarea 5
         qca[4][0] = "Ce semnifica ziua de 1 Decembrie pentru Romania?";
         qca[4][1] = "ziua nationala a Romaniei";
-
+        //Pentru intrebarea 6
         qca[5][0] = "Mihai Eminescu este considerat?";
         qca[5][1] = "cel mai mare poet a Romaniei";
-
+        //Pentru intrebarea 7
         qca[6][0] = "Care este populatia Romaniei(conform recesamantului din 2011)?";
         qca[6][1] = "20.212.641";
-
+        //Pentru intrebarea 8
         qca[7][0] = "Cum se numeste lantul muntos care se afla pe teritoriul Romaniei?";
         qca[7][1] = "Carpati";
-
+        //Pentru intrebarea 9
         qca[8][0] = "Cand s-a nascut Regele Mihai I?";
         qca[8][1] = "25.10.1921";
-
+        //Pentru intrebarea 10
         qca[9][0] = "Ce-a mai mare cladire din Romania este?";
         qca[9][1] = "Casa Poporului";
 
-
-        //create a map object to store pairs of question and selected answer
+        //Creaz HasMap pentru a inperechea intrebarea cu raspuns selectat de catre jucator
         map = new HashMap<Integer, String>();
-
     }
-
+    //Creaza Eveniment
     public String getSelection() {
         String selectedChoice = null;
         Enumeration<AbstractButton> buttons = bg.getElements();
@@ -211,7 +201,7 @@ class  Quiz extends JFrame implements ActionListener {
         return (selectedChoice);
     }
 
-
+        //Alocarea raspunsului pentru o varianta de raspuns
     public void readqa(int qid) {
         lblmess.setText( "  " + qpa[qid][0] );
         choice1.setText( qpa[qid][1] );
@@ -220,14 +210,12 @@ class  Quiz extends JFrame implements ActionListener {
         choice4.setText( qpa[qid][4] );
         choice1.setSelected( false );
     }
-
     public void reset() {
         qaid = 0;
         map.clear();
         readqa( qaid );
-        //btnext.setText("xxxxxxxxxx");
     }
-
+        //Calculeaza numarul raspunsurilor corecte
     public int calCorrectAnswer() {
         int qnum = 10;
         int count = 1;
@@ -235,11 +223,11 @@ class  Quiz extends JFrame implements ActionListener {
             if (qca[qid][1].equals( map.get( qid ) )) count++;
         return count;
     }
-
+        //Crearea pagina pentru Rezultat
     public class Report extends JFrame {
         Report() {
             setTitle( "Rezultat" );
-            setSize( 1000, 550 );
+            setSize( 900, 600 );
             setBackground( Color.WHITE );
             this.setLocationRelativeTo( null );
             addWindowListener( new WindowAdapter() {
@@ -253,7 +241,7 @@ class  Quiz extends JFrame implements ActionListener {
             add( d );
             setVisible( true );
         }
-
+        //Creaza desfasurator intrebare-raspunsul tau-raspunsul corect
         class Draw extends Canvas {
             public void paint(Graphics g) {
                 int qnum = 10;
@@ -270,29 +258,21 @@ class  Quiz extends JFrame implements ActionListener {
                     g.drawString( "      Raspunsul tau:" + map.get( i ), x, y );
                     y += 30;
 
-                    //print the 2nd column
                     if (y > 400) {
                         y = 20;
                         x = 450;
                     }
-
                 }
-                //Show number of correct answers
+                //Afiseara numarul raspunsurilor corecte
                 int scor = calCorrectAnswer();
-                g.setColor( Color.BLUE );
-                g.setFont( new Font( "Arial", Font.BOLD, 14 ) );
+                g.setColor( Color.BLACK );
+                g.setFont( new Font( "Arial", Font.BOLD, 16 ) );
                 g.drawString( "Numarul raspunsurilor corecte:" + scor, 300, 500 );
-                //////////////////////
+                //Inserare in DB Nume jucatorului si scorul obtinut(numarul raspunsurilor corecte)
                 String insertDb = "insert into numejucator(nume,scor) values ('" + numejucator + "'," + scor + ")";
-                //String insertDb = "insert into numejucator" + "(nume)" + "values ('" + numejucator + ")";
-               //String insertDb2 ="insert into numejucator (nume) values ('cthrth')";
                 System.out.println(insertDb);
                 try {
-                    System.out.println("    -> BEFORE execute update");
-
-                    System.out.println("    -> QUIZ: statement = " + myStmt);
                     myStmt.executeUpdate(insertDb);
-                    System.out.println("    -> AFTER execute update");
                 } catch (SQLException e) {
                     e.printStackTrace();
 
